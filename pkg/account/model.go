@@ -1,6 +1,8 @@
 package account
 
+import "github.com/gofrs/uuid/v5"
+
 type Account struct {
-	ID   string
+	ID   uuid.UUID
 	Name string
 }

@@ -1,11 +1,11 @@
-package router
+package http_router
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5"
-	"github.com/nerlihmax/te/internal/account"
+	"github.com/nerlihmax/te/pkg/account"
 )
 
 func Register(app *gin.Engine, db *pgx.Conn) {
@@ -24,7 +24,6 @@ func Register(app *gin.Engine, db *pgx.Conn) {
 	{
 		repo := account.NewRepository(db)
 		service := account.NewService(repo)
-		account.RegisterHandlers(app.Group("/accounts"), service)
+		account.RegisterHTTPHandlers(app.Group("/accounts"), service)
 	}
-
 }
